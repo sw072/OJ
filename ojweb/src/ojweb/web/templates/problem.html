@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+{{ pno }}{{ problem.title }}
+{% endblock %}
+{% block content %}
+<h3 style='text-align:center'>{{ problem.title }}</h3>
+<p style='text-align:center;font-size:15px'><b>Time Limit:</b>{{ problem.timelmt }}MS &nbsp;&nbsp;&nbsp; <b>Memory Limit:</b>{{ problem.memlmt}}MB</p>
+<p style='text-align:center;font-size:15px'><b>Total Submission:</b>{{ total_submission }} &nbsp;&nbsp;&nbsp; <b>Accepted:</b>{{ problem.ac}}</p>
+<h3>Description</h3>
+{{ problem.desc|safe }}
+<h3>Input</h3>
+<p>{{ problem.input|safe }}</p>
+<h3>Output</h3>
+<p>{{ problem.output|safe }}</p>
+<h3>Sample Input</h3>
+<p><pre>{{ problem.samplein }}</pre></p>
+<h3>Sample Output</h3>
+<p><pre>{{ problem.sampleout }}</pre></p>
+<h3>Hint</h3>
+<p>{{ problem.hint }}</p>
+<h3>Source</h3>
+<p>{{ problem.source }}</p>
+<div>
+<table style='width:30%'>
+<tr>
+<td><a href='/submit/{{ problem.no }}'>Submit</a></td>
+<td><a href='/statistic/{{ problem.no }}'>Statistic</a></td>
+<td><a href='/discuss/{{ problem.no }}'>Discuss</a></td>
+</tr>
+</table>
+</div>
+{% endblock %}

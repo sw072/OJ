@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+Submit Solution
+{% endblock %}
+{% block content %}
+<form action='.' method='POST'>
+<table>
+<tr>
+	<td style="text-align:right; width:20%">
+		Problem ID:
+	</td>
+	<td style="text-align:left;"><input id="pno" name="pno" value='{{ pno }}'></input></td>
+</tr>
+<tr>
+	<td style="text-align:right;">
+		Language:
+	</td>
+	<td style="text-align:left;">
+		<select id="lang" name="lang">
+			<option value='0'>C(gcc)</option>
+			<option value='1'>C++(g++)</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td style="text-align:right; vertical-align:top">
+		Code:
+	</td>
+	<td style="text-align:left;"><textarea rows="30" cols="100" id="code" name="code"></textarea></td>
+</tr>
+<tr>
+	<td></td>
+	<td style="text-align:left;">
+		<input type='submit' value='Submit'/>
+	</td>
+</tr>
+</table>
+</form>
+{% endblock %}

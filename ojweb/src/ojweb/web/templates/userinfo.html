@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}
+Your Information
+{% endblock %}
+{% block content %}
+<div style='float:left;'>
+<table style='width:35%'>
+<tr>
+	<td style='text-align:right'>
+		User Name:
+	</td>
+	<td style='text-align:left'>{{ user.username }}</td>
+</tr>
+<tr>
+	<td style='text-align:right'>
+		Email:
+	</td>
+	<td style='text-align:left'>{{ user.email }}</td>
+</tr>
+<tr>
+	<td style='text-align:right'>
+		School:
+	</td>
+	<td style='text-align:left'>{{ user.school }}</td>
+</tr>
+<tr>
+	<td style='text-align:right'>
+		Motto:
+	</td>
+	<td style='text-align:left'>{{ user.motto }}</td>
+</tr>
+<tr>
+	<td style='text-align:right'>
+		Homepage:
+	</td>
+	<td style='text-align:left'>
+		{% if user.homepage %}
+			<a href='{{ user.homepage }}' target='_blank'>{{ user.homepage }}</a></td>
+		{% endif %}
+</tr>
+<tr>
+	<td style='text-align:right'>
+		Last log in:
+	</td>
+	<td style='text-align:left'>{{ user.last_login|date:"Y-m-d H:i:s" }}</td>
+</tr>
+</table>
+</div>
+<div>
+<table style='width:50%'>
+<tr>
+	<td style='text-align:left'>
+		Solved Problems:
+	</td>
+</tr>
+<tr>
+	<td style='text-align:left'>
+		{% for pno in solved_problems %}
+			<a href='/problems/{{pno}}'>{{ pno }}</a> &nbsp;
+		{% endfor %}
+	</td>
+</tr>
+</table>
+</div>
+{% endblock %}

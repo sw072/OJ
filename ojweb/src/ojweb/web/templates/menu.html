@@ -1,0 +1,38 @@
+<table width="100%" rules="all" >
+	<tr><td>Online Judge</td><td>Problem</td><td>Contest</td><td>User</td></tr>
+	<tr>
+		<td width="25%">
+			<ul id="menu">
+				<li><a href="/">Home</a></li>
+				<li><a href="/faq">FAQ</a></li>
+				<li><a href="/comment">Comment</a></li>
+			</ul>
+		</td>
+		<td width="25%">
+			<ul id="menu">
+				<li><a href="/problems">Problems</a></li>
+				<li><a href="/submit">Submit Solution</a></li>
+				<li><a href="/onlinestatus">Online Status</a></li>
+			</ul>
+		</td>
+		<td width="25%">
+			<ul id="menu">
+				<li><a href="#">Current Contests</a></li>
+				<li><a href="#">Past Contests</a></li>
+				<li><a href="#">Scheduled Contests</a></li>
+			</ul>
+		</td>
+		<td width="25%">
+			<ul id="menu">
+		{% if user.is_authenticated %}
+				<li>welcome <a href="/user/{{ user.id }}">{{ user.username }}</a></li>
+				<li><a href="/logout">Logout</a></li>
+		{% else %}
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+		{% endif %}
+				<li><a href="/userrank">Users Ranklist</a></li>
+			</ul>
+		</td>
+	</tr>
+</table>

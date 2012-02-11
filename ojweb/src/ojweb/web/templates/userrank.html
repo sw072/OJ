@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+User Rank
+{% endblock %}
+{% block content %}
+<table width="100%">
+	<tr>
+		<th>Rank</th><th>User Name</th><th>Accepted</th>
+	</tr>
+	<tbody>
+	{% for r in rank_list %}
+	<tr>
+		<td>{{ forloop.counter|add:start_idx }}</td>
+		<td><a href='/user/{{ r.id }}'>{{ r.username }}</a></td>
+		<td>{{ r.ac_num }}</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<br/>
+<table width='60%'>
+<tr>
+<td style='text-align:center;width:25%'>
+<a href='/userrank/1'>&lt;&lt;First Page</a>
+</td>
+<td style='text-align:center;width:25%'>
+{% ifnotequal curr_page 1 %}
+	<a href='/userrank/{{ curr_page|add:"-1" }}'>&lt;Previous Page</a>
+{% else %} &lt;Previous Page {% endifnotequal %}
+</td>
+<td style='text-align:center;width:25%'>
+{% ifnotequal curr_page max_page %}
+	<a href='/userrank/{{ curr_page|add:"1" }}'>Next Page&gt;</a>
+{% else %} Next Page&gt; {% endifnotequal %}
+</td>
+<td style='text-align:center;width:25%'>
+<a href='/userrank/{{ max_page }}'>Last Page&gt;&gt;</a>
+</td>
+</tr>
+</table>
+{% endblock %}

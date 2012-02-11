@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}
+Online Status
+{% endblock %}
+{% block content %}
+<table width="100%">
+	<tr>
+		<th>Run ID</th><th>User Name</th><th>Problem ID</th><th>Result</th><th>Time</th>
+		<th>Memory</th><th>Language</th><th>Code Length</th><th>Submit Time</th>
+	</tr>
+	<tbody>
+	{% for s in status %}
+	<tr>
+		<td>{{ s.id }}</td>
+		<td><a href='/user/{{ s.user.id }}'>{{ s.user.username }}</a></td>
+		<td><a href='/problem/{{ s.problem_no.no }}'>{{ s.problem_no.no }}</a></td>
+		<td>
+			{% ifequal s.result_code 1 %}
+				<a href='/compileinfo/{{ s.id }}' target='_blank'>{{ s.result_text }}</a>
+			{% else %}
+				{{ s.result_text }}
+			{% endifequal %}
+		</td>
+		<td>{{ s.run_time }}MS</td>
+		<td>{{ s.run_mem }}KB</td>
+		<td>
+			{% if user.is_authenticated %}
+				{% ifequal user.id s.user.id %}
+					<a href='/codeview/{{ s.id }}' target='_blank'>
+				{% endifequal %}
+			{% endif %}
+				{% ifequal s.lang 0 %}C{% endifequal %}
+				{% ifequal s.lang 1 %}C++{% endifequal %}
+			{% if user.is_authenticated %}
+				{% ifequal user.id s.user.id %}
+					</a>
+				{% endifequal %}
+			{% endif %}
+		</td>
+		<td>{{ s.code_len }}B</td>
+		<td>{{ s.submit_time|date:"Y-m-d H:i:s" }}</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<br/>
+<table width='60%'>
+<tr>
+<td style='text-align:center;width:25%'>
+<a href='/onlinestatus/1'>&lt;&lt;First Page</a>
+</td>
+<td style='text-align:center;width:25%'>
+{% ifnotequal curr_page 1 %}
+	<a href='/onlinestatus/{{ curr_page|add:"-1" }}'>&lt;Previous Page</a>
+{% else %} &lt;Previous Page {% endifnotequal %}
+</td>
+<td style='text-align:center;width:25%'>
+{% ifnotequal curr_page max_page %}
+	<a href='/onlinestatus/{{ curr_page|add:"1" }}'>Next Page&gt;</a>
+{% else %} Next Page&gt; {% endifnotequal %}
+</td>
+<td style='text-align:center;width:25%'>
+<a href='/onlinestatus/{{ max_page }}'>Last Page&gt;&gt;</a>
+</td>
+</tr>
+</table>
+{% endblock %}

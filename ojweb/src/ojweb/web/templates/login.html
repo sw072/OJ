@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+<form action='.' method='POST'>
+<table>
+<tr>
+	<td>
+		User Name:
+	</td>
+	<td style='text-align:left'><input id='user_name' name='user_name'></input></td>
+</tr>
+<tr>
+	<td>
+		Password:
+	</td>
+	<td style='text-align:left'><input id='user_pass' name='user_pass' type='password'></input></td>
+</tr>
+<tr>
+	<td></td>
+	<td style='text-align:left'>
+		<input type='submit' value='Login'/>
+	</td>
+</tr>
+</table>
+{% if next %}
+	<input type="hidden" id="next" name="next" value="{{ next }}" />
+{% endif %}
+</form>
+{% endblock %}

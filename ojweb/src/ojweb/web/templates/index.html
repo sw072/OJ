@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+==welcome==
+{% endblock %}
+{% block content %}
+<h2 style='text-align:center'>welcome!</h2>
+<li id="menu" style='font-size:15px'>
+<ul>这是一个简易版的<a href='http://en.wikipedia.org/wiki/Online_judge' target='_blank'>Online Judge</a>，目前仅支持C、C++，且代码长度不能超过4K</ul>
+<ul>您可以<a href='/register'>注册帐号</a>，或者用测试帐号guest(密码：guest)<a href='/login'>登录</a></ul>
+<ul>Web采用django，Judge端采用了<a href='http://openjudge.net/~liuyu/Project/LibSandbox' target='_blank'>Liu Yu(HIT)</a>的<a href='http://sourceforge.net/projects/libsandbox/' target='_blank'>Sandbox Project</a></ul>
+<ul><a href='/comment'>欢迎提出问题或建议</a>，请联系shiwei072@gmail.com 或者 
+	<a href='http://weibo.com/u/1880362902' target='_blank'><img src='http://www.miui.com/images/sinaweibo.gif'/>新浪微博</a> 或者
+	<a href='http://t.qq.com/sw_072' target='_blank'><img src='http://www.miui.com/images/tenweibo.gif'/>腾讯微博</a>
+</ul>
+	
+</li>
+{% endblock %}

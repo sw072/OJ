@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+Comments
+{% endblock %}
+{% block content %}
+<table width="100%">
+	<tr>
+		<th>No.</th><th>User Name</th><th>Content</th><th>Submit Time</th>
+	</tr>
+	<tbody>
+	{% for c in comments %}
+	<tr>
+		<td>{{ forloop.counter }}</td><td>{{ c.name }}</td><td>{{ c.content }}</td><td>{{ c.submit_time|date:"Y-m-d H:i:s" }}</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<form action='.' method='POST'>
+<br/>
+<h3 style="text-align:center">Your Comment</h3>
+{% if msgs %}
+<li id="menu" style='font-size:15px'>
+	{% for msg in msgs %}
+		<ul>{{ msg }}</ul>
+	{% endfor %}
+</li>
+{% endif %}
+<table width='70%'>
+<tr>
+	<td style='text-align:right;width:30%'>Your Name:</td>
+	<td style='text-align:left'><input id="user_name" name="user_name" type="text" maxlength="32" value='{{ comment.name }}'/></td>
+</tr>
+<tr>
+	<td style='text-align:right'>Comment:</td>
+	<td style='text-align:left'><textarea id="content" name="content" rows="10" cols="64" maxlength="256">{{ comment.content }}</textarea></td>
+</tr>
+<tr><td></td><td style='text-align:left'><input type='submit' value='Submit'/></td></tr>
+</table>
+</form>
+{% endblock %}
